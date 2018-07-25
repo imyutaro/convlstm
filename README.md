@@ -1,7 +1,7 @@
 # README
 #### スライド
-- slide.pdf , slide.pptx
-  研究発表のためのスライド
+- slide.pdf, slide.pptx
+  研究発表のためのスライド
 
 #### 前処理
 - mkMFCC.py
