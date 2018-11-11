@@ -106,15 +106,15 @@ def build_cnn(input_shape):
 
     dense_3 = Dense(2048)(dense_2)
     dense_4 = Dense(2048)(dense_3)
-    dense_5 = Dense(2)(dense_4)
-    softmax_1 = Activation('softmax')(dence_5)
+    dense_5 = Dense(1)(dense_4)
+    softmax_1 = Activation('sigmoid')(dence_5)
 
     model = Model(inputs=[inputs], outputs=[softmax_1])
 
     model.summary()
 
-    # マルチクラスの出力を行う場合, cross_entropyは非推奨
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    #model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     return model
 
@@ -169,7 +169,6 @@ def build_cnn_test(input_shape, nb_filters=None):
 
     model.summary()
 
-    # マルチクラスの出力を行う場合, cross_entropyは非推奨
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy', 'mse', recall_score])
 
     return model
