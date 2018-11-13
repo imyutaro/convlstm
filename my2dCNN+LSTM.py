@@ -16,8 +16,17 @@ from keras.optimizers import Adagrad
 from keras.optimizers import Adam
 from keras.callbacks import TensorBoard, EarlyStopping
 from keras import backend as K
+import tensorflow as tf
 #import loadCsv as load
 import loadWav as load
+
+import os
+os.environ['PYTHONHASHSEED'] = '0'
+np.random.seed(42)
+session_conf = tf.ConfigProto(intra_op_parallelism_threads=1, inter_op_parallelism_threads=1)
+tf.set_random_seed(1234)
+sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)
+K.set_session(sess)
 
 #src_path='./wavSrc/time_change/instrument/'
 #src_path = './wavSrc/instrument/same_instrument/'
